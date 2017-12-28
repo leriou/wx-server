@@ -1,6 +1,16 @@
-# server-hub
+# wx-server
 
 这是一个用于个人演示和学习的项目,基于Beego框架进行开发,只提供API服务
+
+## 安装
+
+使用go官方推荐的`dep`来做包管理
+
+安装dep:`brew innstall dep`
+
+安装依赖:`dep ensure`
+
+## 开发计划
 
 目前的开发计划有
 
