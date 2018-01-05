@@ -4,8 +4,8 @@ import (
 	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/orm"
 	_ "github.com/go-sql-driver/mysql"
-	"server-hub/models"
-	_ "server-hub/routers"
+	"go-server/models"
+	_ "go-server/routers"
 	"github.com/go-redis/redis"
 )
 
