@@ -4,9 +4,9 @@ import (
 	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/orm"
 	_ "github.com/go-sql-driver/mysql"
-	"go-server/models"
-	_ "go-server/routers"
-	"github.com/go-redis/redis"
+	// "server-hub/models"
+	_ "server-hub/routers"
+	// "github.com/go-redis/redis"
 )
 
 func init() {
@@ -20,13 +20,7 @@ func init() {
 	conn := db_uname+":"+db_pwd+"@tcp("+db_host+":3306)/"+db_database+"?charset="+db_charset
 	orm.RegisterDataBase("default", "mysql",conn, 30)
 	// create table
-	//orm.RunSyncdb("default", false, true)
-
-	client := redis.NewClient(&redis.Options{
-				Addr:     "localhost:6379",
-				Password: "", // no password set
-				DB:       0,  // use default DB
-			})
+	orm.RunSyncdb("default", false, true)
 }
 
 func main() {

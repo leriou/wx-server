@@ -1,13 +1,14 @@
 package controllers
 
 import (
-	"github.com/go-redis/redis"
+	// "github.com/go-redis/redis"
 	"github.com/astaxie/beego"
 	"server-hub/library"
 	"time"
 	"io/ioutil"
 	"encoding/xml"
 	"strings"
+	"github.com/go-redis/redis"
 )
 
 /**
@@ -15,6 +16,15 @@ import (
  */
 type MainController struct {
 	beego.Controller
+}
+
+func init(){
+
+}
+
+func (c *MainController) GetRedis() *redis.Client{
+	di := new(library.Di)
+	return di.GetRedis()
 }
 
 /**
@@ -156,6 +166,7 @@ func (c *MainController) getResponseMsg(sent,openid string) string{
 			medis   ---图形化的redis管理软件
 			`
 		default:
+			client := c.GetRedis()
 			val, _ := client.Get(sent).Result()
 			if val == "" {
 				s = "暂时不提供该服务,请稍等几天"

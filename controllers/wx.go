@@ -6,7 +6,6 @@ import (
 	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/httplib"
 	simplejson "github.com/bitly/go-simplejson"
-	"github.com/go-redis/redis"
 )
 
 /**
@@ -19,11 +18,7 @@ type WxController struct{
 // 获取access_token
 func (c *WxController) getAccessToken() string{
 	//从redis中获取access_token
-	client := redis.NewClient(&redis.Options{
-		Addr:     "localhost:6379",
-		Password: "", // no password set
-		DB:       0,  // use default DB
-	})
+	client := c.GetRedis()
 	// access_key := "wx_access_token"
 	val, _ := client.Get("wx_access_token").Result()
 	if val == "" {
@@ -35,6 +30,7 @@ func (c *WxController) getAccessToken() string{
 
 // 刷新access_token,并更新redis
 func (c *WxController) refresh() string{
+	client := c.GetRedis()
 	//从微信接口获取新的access_token
 	token_url :=  beego.AppConfig.String("wx.token_url")
 	grant_type := beego.AppConfig.String("wx.grant_type")
