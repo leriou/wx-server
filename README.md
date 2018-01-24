@@ -10,12 +10,34 @@
 
 安装依赖:`dep ensure`
 
+## 运行
+
+增加配置
+
+1. 在 server-hub 目录里面创建目录 conf, 新增配置文件 app.conf
+
+app.conf内容
+
+        appname = server-hub
+        httpport = 8087
+        runmode = dev
+
+        [mysql]
+        host = localhost
+        username = root
+        password = password
+        database = wx_mp
+        port = 3306
+        charset = utf8
+
+运行`go run main.go` or `bee run` 
+
 ## 开发计划
 
 目前的开发计划有
 
 1. 为微信公众号提供服务
-2. 用户系统(独立出去,跟微信用户不相干)
+2. 用户系统
 3. 权限系统
 4. 后台任务
 5. 机器学习功能

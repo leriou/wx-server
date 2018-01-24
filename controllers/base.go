@@ -39,10 +39,10 @@ func (c *MainController) Get() {
 	var echostr string
 	echostr = c.GetString("echostr") //随机字符串
 	if echostr == "" {
-		echostr = "request success but no params"
+		echostr = "request success"
 	} else{
 		// 获取四个微信参数,进行字典排序
-		token := beego.AppConfig.String("wx.server_request_token")
+		token := "serverhub"
 		signature := c.GetString("signature") // 签名
 		timestamp := c.GetString("timestamp") // 时间戳
 		nonce := c.GetString("nonce")         // 随机数
