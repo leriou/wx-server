@@ -1,7 +1,7 @@
 package controllers
 
 import (
-	// "server-hub/library"
+	"server-hub/models"
 )
 
 /**
@@ -12,7 +12,6 @@ type ApiController struct{
 }
 
 func (c *ApiController) TestJson(){
-	res := apiResponse{true,"api request success"}
-	c.Data["json"] = &res
+	c.Data["json"] = &apiResponse{true,"api request success",[]models.User{}}
 	c.ServeJSON()
 }

@@ -3,6 +3,7 @@ package controllers
 import (
 	"encoding/xml"
 	"time"
+	"server-hub/models"
 )
 
 /*******************************
@@ -15,6 +16,7 @@ import (
 type apiResponse struct {
 	Status bool   `json:"status"`
 	Msg    string `json:"msg"`
+	Data   []models.User
 }
 
 /**

@@ -12,6 +12,10 @@ import (
 type Tools struct {
 
 }
+
+func NewTools() *Tools {
+	return new(Tools)
+}
 // md5加密
 func (t *Tools) Md5(s string) string{ 
 	return fmt.Sprintf("%x",md5.Sum([]byte(s)))

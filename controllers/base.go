@@ -42,13 +42,12 @@ func (c *MainController) Get() {
 		echostr = "request success"
 	} else{
 		// 获取四个微信参数,进行字典排序
-		token := "serverhub"
 		signature := c.GetString("signature") // 签名
 		timestamp := c.GetString("timestamp") // 时间戳
 		nonce := c.GetString("nonce")         // 随机数
 		//验证微信服务器的加密
-		WX := library.WX{}
-		if !WX.ValidateWxServer(token,signature,timestamp,nonce) {
+		WX := library.NewWX()
+		if !WX.ValidateWxSignature(signature,timestamp,nonce) {
 			echostr = ""
 		}
 	}
@@ -103,13 +102,14 @@ func (c *MainController) makeResponseBody(FromUserName,ToUserName,Content string
     textResponseBody.CreateTime = time.Duration(time.Now().Unix())
     return xml.MarshalIndent(textResponseBody, " ", "  ")
 }
+
 /**
  * 根据发送信息生成返回信息
  */
 func (c *MainController) getResponseMsg(sent,openid string) string{
 	var s string
 	v := strings.Split(sent, ":")
-	tools := library.Tools{}
+	tools := library.NewTools()
 	// WX := library.WX{}
 	switch v[0] {
 		case "功能列表":
@@ -166,8 +166,7 @@ func (c *MainController) getResponseMsg(sent,openid string) string{
 			medis   ---图形化的redis管理软件
 			`
 		default:
-			client := c.GetRedis()
-			val, _ := client.Get(sent).Result()
+			val, _ := c.GetRedis().Get(sent).Result()
 			if val == "" {
 				s = "暂时不提供该服务,请稍等几天"
 			} else {

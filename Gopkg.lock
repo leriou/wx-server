@@ -16,8 +16,8 @@
 [[projects]]
   name = "github.com/go-redis/redis"
   packages = [".","internal","internal/consistenthash","internal/hashtag","internal/pool","internal/proto"]
-  revision = "9c885d5ba8a22f260badcffde1649915fbeebfc0"
-  version = "v6.7.5"
+  revision = "4021ace05686f632ff17fd824bbed229fc474cf8"
+  version = "v6.8.2"
 
 [[projects]]
   name = "github.com/go-sql-driver/mysql"
@@ -29,13 +29,19 @@
   branch = "master"
   name = "github.com/gopherjs/gopherjs"
   packages = ["js"]
-  revision = "444abdf920945de5d4a977b572bcc6c674d1e4eb"
+  revision = "178c176a91fe05e3e6c58fa5c989bad19e6cdcb3"
 
 [[projects]]
   name = "github.com/jtolds/gls"
   packages = ["."]
   revision = "77f18212c9c7edc9bd6a33d383a7b545ce62f064"
   version = "v4.2.1"
+
+[[projects]]
+  branch = "master"
+  name = "github.com/m1ome/randstr"
+  packages = ["."]
+  revision = "50e7f2dc02885b676dda38f82c5185e921660ade"
 
 [[projects]]
   name = "github.com/smartystreets/assertions"
@@ -52,6 +58,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "17d15ec941c0ae56e80b2b122b0007fdaccd4f4fb327610a80cf8c25782d2076"
+  inputs-digest = "5b0f45d4838d439237db3c41a25aca7eae3c214c8083b8acbd57a20a44cf1a3e"
   solver-name = "gps-cdcl"
   solver-version = 1

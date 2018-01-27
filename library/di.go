@@ -12,6 +12,10 @@ var (
 	redisClient *redis.Client
 )
 
+func NewDi() *Di{
+	return  new(Di)
+}
+
 func (d *Di) GetRedis() *redis.Client{
 	if redisClient != nil {
 		return redisClient
@@ -21,5 +25,6 @@ func (d *Di) GetRedis() *redis.Client{
 		Password: "", // no password set
 		DB:       0,  // use default DB
 	}
-	return redis.NewClient(redisOptions)
+	redisClient = redis.NewClient(redisOptions)
+	return redisClient
 }
