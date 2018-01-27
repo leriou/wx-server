@@ -6,4 +6,4 @@ nohup.out
 conf/app.conf
 vendor
 
-_vendor*.+
+_vendor**
